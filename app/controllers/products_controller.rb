@@ -1,14 +1,5 @@
 class ProductsController < ApplicationController
   
-  def product_params
-    {
-      name: params[:name], 
-      price: params[:price], 
-      image_url: params[:image_url], 
-      description: params[:description]
-    }
-  end
-
   # CREATE
   def create
     @product = Product.new(product_params)
@@ -18,18 +9,18 @@ class ProductsController < ApplicationController
       render json: {error: @product.errors.full_messages}, status: :unprocessable_entity
     end
   end
-
+  
   # READ
   def show
     @product = Product.find_by(id: params[:id])
     render :show
   end
-
+  
   def index
     @products = Product.all
     render :index
   end
-
+  
   # UPDATE
   def update
     @product = Product.find_by(id: params[:id])
@@ -43,7 +34,7 @@ class ProductsController < ApplicationController
       render json: {error: @product.errors.full_messages}, status: :unprocessable_entity
     end
   end
-
+  
   # DESTROY
   def destroy
     @product = Product.find_by(id: params[:id])
@@ -51,4 +42,12 @@ class ProductsController < ApplicationController
     render json: {message: "#{@product.name} deleted."}
   end
   
+  def product_params
+    {
+      name: params[:name], 
+      price: params[:price], 
+      image_url: params[:image_url], 
+      description: params[:description]
+    }
+  end
 end
