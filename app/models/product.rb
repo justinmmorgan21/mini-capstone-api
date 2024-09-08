@@ -19,4 +19,6 @@ class Product < ApplicationRecord
     "$%0.2f" % [total]
   end
 
+  
+
 end
