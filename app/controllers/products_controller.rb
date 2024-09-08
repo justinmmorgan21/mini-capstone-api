@@ -13,21 +13,21 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     if @product.save
-      render template: "products/show"
+      render :show
     else
-      render json: {message: "ERROR"}
+      render json: {error: @product.errors.full_messages}, status: :unprocessable_entity
     end
   end
 
   # READ
   def show
     @product = Product.find_by(id: params[:id])
-    render template: "products/show"
+    render :show
   end
 
   def index
     @products = Product.all
-    render template: "products/index"
+    render :index
   end
 
   # UPDATE
@@ -37,8 +37,11 @@ class ProductsController < ApplicationController
     @product.price = params[:price] || @product.price
     @product.image_url = params[:image_url] || @product.image_url
     @product.description = params[:description] || @product.description
-    @product.save
-    render template: "products/show"
+    if @product.save
+      render :show
+    else
+      render json: {error: @product.errors.full_messages}, status: :unprocessable_entity
+    end
   end
 
   # DESTROY
