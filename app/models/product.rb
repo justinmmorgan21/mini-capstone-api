@@ -1,4 +1,8 @@
 class Product < ApplicationRecord
+  validates :name, presence: true, uniqueness: true
+  validates :price, presence: true, numerality: { greater_than: 0 }
+  validates :description, presence: true, length:  { in: 1..500 }
+
   def is_discounted?
     price <= 10
   end
@@ -8,7 +12,7 @@ class Product < ApplicationRecord
   end
 
   def tax_formatted_string
-    "$%0.2f" % [tax] 
+    "$%0.2f" % [tax]  
   end
 
   def total
