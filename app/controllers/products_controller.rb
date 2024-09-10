@@ -26,8 +26,8 @@ class ProductsController < ApplicationController
     @product = Product.find_by(id: params[:id])
     @product.name = params[:name] || @product.name
     @product.price = params[:price] || @product.price
-    @product.image_url = params[:image_url] || @product.image_url
     @product.description = params[:description] || @product.description
+    @product.description = params[:supplier_id] || @product.supplier_id
     if @product.save
       render :show
     else
@@ -45,9 +45,9 @@ class ProductsController < ApplicationController
   def product_params
     {
       name: params[:name], 
-      price: params[:price], 
-      image_url: params[:image_url], 
-      description: params[:description]
+      price: params[:price],  
+      description: params[:description],
+      supplier_id: params[:supplier_id]
     }
   end
 end
