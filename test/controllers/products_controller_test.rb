@@ -11,7 +11,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
 
   test "create" do
     assert_difference "Product.count", 1 do
-      post "/products.json", params: { name: "dummy", price: "200", image_url: "http://dummy.com", description: "really cool thing"}
+      post "/products.json", params: { name: "dummy", price: "200", description: "really cool thing", inventory: "300", supplier_id: "1"}
       assert_response 200
     end
     

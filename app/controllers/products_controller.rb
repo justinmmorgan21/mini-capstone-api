@@ -27,6 +27,7 @@ class ProductsController < ApplicationController
     @product.name = params[:name] || @product.name
     @product.price = params[:price] || @product.price
     @product.description = params[:description] || @product.description
+    @product.inventory = params[:inventory] || @product.inventory
     @product.description = params[:supplier_id] || @product.supplier_id
     if @product.save
       render :show
@@ -47,6 +48,7 @@ class ProductsController < ApplicationController
       name: params[:name], 
       price: params[:price],  
       description: params[:description],
+      inventory: params[:inventory],
       supplier_id: params[:supplier_id]
     }
   end
