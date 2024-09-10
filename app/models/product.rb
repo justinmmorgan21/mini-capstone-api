@@ -23,6 +23,10 @@ class Product < ApplicationRecord
     "$%0.2f" % [total]
   end
 
-  
+  # def supplier
+  #   Supplier.find_by(id: supplier_id)
+  # end
+  belongs_to :supplier
 
+  has_many :images
 end
