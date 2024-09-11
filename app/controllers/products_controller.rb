@@ -17,6 +17,9 @@ class ProductsController < ApplicationController
   end
   
   def index
+    # pp "USER IS HERE"
+    # pp current_user
+    # pp "USER WAS HERE"
     @products = Product.all
     render :index
   end
@@ -28,7 +31,7 @@ class ProductsController < ApplicationController
     @product.price = params[:price] || @product.price
     @product.description = params[:description] || @product.description
     @product.inventory = params[:inventory] || @product.inventory
-    @product.description = params[:supplier_id] || @product.supplier_id
+    @product.supplier_id = params[:supplier_id] || @product.supplier_id
     if @product.save
       render :show
     else

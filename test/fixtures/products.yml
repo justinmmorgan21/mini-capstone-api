@@ -3,7 +3,7 @@
 one:
   name: MyString
   price: 1
-  description: MyString
+  description: MyString12345
   inventory: 1
   supplier_id: 1
 
@@ -11,6 +11,6 @@ one:
 two:
   name: MyString
   price: 1
-  description: MyString
+  description: MyString12345
   inventory: 1
   supplier_id: 1
