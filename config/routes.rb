@@ -28,6 +28,12 @@ Rails.application.routes.draw do
   # Sessions
   post "/sessions" => "sessions#create"
 
+  # Orders
+  post "/orders" => "orders#create"
+  get "/orders/:id" => "orders#show"
+  get "/orders/" => "orders#index"
+
+
   # Defines the root path route ("/")
   # root "posts#index"
   # 
