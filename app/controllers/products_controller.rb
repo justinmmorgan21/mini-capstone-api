@@ -4,6 +4,9 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     if @product.save
+      params[:image].each { |image|
+        Image.create(url: image, product_id: @product.id)
+      }
       render :show
     else
       render json: {error: @product.errors.full_messages}, status: :unprocessable_entity

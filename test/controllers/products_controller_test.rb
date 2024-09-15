@@ -26,7 +26,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     assert_response 200
 
     data = JSON.parse(response.body)
-    assert_equal ["id", "name", "price", "description", "is_discounted?", "tax", "total_formatted_string", "supplier", "images"], data.keys
+    assert_equal ["id", "name", "price", "images", "description"], data.keys
   end
 
   test "update" do

@@ -20,7 +20,11 @@ class OrdersController < ApplicationController
   def show
     if current_user
       @order = Order.find_by(id: params[:id])
-      render :show
+      if @order.user_id == current_user.id
+        render :show
+      else
+        render json: { message: "That is not your order" }
+      end
     else
       render json: { message: "You must be logged in." }
     end
@@ -28,7 +32,7 @@ class OrdersController < ApplicationController
 
   def index
     if current_user
-      @orders = Order.all
+      @orders = Order.where(user_id: current_user.id)
       render :index
     else
       render json: { message: "You must be logged in." }
