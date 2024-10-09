@@ -31,11 +31,17 @@ Rails.application.routes.draw do
   # Sessions
   post "/sessions" => "sessions#create"
 
+  # Carted_Products
+  post "/carted-products" => "carted_products#create"
+  get "/carted-products" => "carted_products#index"
+  delete "/carted-products/:id" => "carted_products#destroy"
+
   # Orders
   post "/orders" => "orders#create"
   get "/orders/:id" => "orders#show"
   get "/orders/" => "orders#index"
 
+  get "/categories" => "categories#index"
 
   # Defines the root path route ("/")
   # root "posts#index"
