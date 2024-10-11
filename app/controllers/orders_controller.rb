@@ -1,7 +1,9 @@
 class OrdersController < ApplicationController
   def create
     carted_products = CartedProduct.where(user_id: current_user.id, status: "carted")
-    subtotal = Order.subtotal(carted_products)
+    subtotal = carted_products.sum { |carted_product|
+      carted_product.product.price * carted_product.quantity
+    }
     tax = subtotal * 0.09
     total = subtotal + tax
     @order = Order.new(

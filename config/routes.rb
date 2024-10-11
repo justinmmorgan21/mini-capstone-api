@@ -32,9 +32,9 @@ Rails.application.routes.draw do
   post "/sessions" => "sessions#create"
 
   # Carted_Products
-  post "/carted-products" => "carted_products#create"
-  get "/carted-products" => "carted_products#index"
-  delete "/carted-products/:id" => "carted_products#destroy"
+  post "/carted_products" => "carted_products#create"
+  get "/carted_products" => "carted_products#index"
+  delete "/carted_products/:id" => "carted_products#destroy"
 
   # Orders
   post "/orders" => "orders#create"
