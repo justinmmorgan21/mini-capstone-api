@@ -3,10 +3,8 @@ class CartedProduct < ApplicationRecord
   belongs_to :user
   belongs_to :product
 
-  # def total
-  #   const subtotal = CartedProduct.where(id: current_user.id).sum { |cp|
-  #     cp.product.price * cp.quantity
-  #   }
-  #   (subtotal * 1.09).toFixed(2);
-  # end
+  def total
+    quantity * product.price * 1.09
+  end
+
 end
