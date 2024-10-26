@@ -24,4 +24,10 @@ class SavedProductsController < ApplicationController
     end
   end
 
+  def destroy
+    @saved_product = SavedProduct.find_by(id: params[:id])
+    @saved_product.destroy
+
+    render json: { message: "#{@saved_product.product.name} deleted."}
+  end
 end

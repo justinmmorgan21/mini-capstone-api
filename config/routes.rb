@@ -47,6 +47,7 @@ Rails.application.routes.draw do
   # Saved_Products
   post "/saved_products" => "saved_products#create"
   get "/saved_products" => "saved_products#index"
+  delete "/saved_products/:id" => "saved_products#destroy"
 
   # Defines the root path route ("/")
   # root "posts#index"
