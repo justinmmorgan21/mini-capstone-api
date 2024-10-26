@@ -44,6 +44,10 @@ Rails.application.routes.draw do
 
   get "/categories" => "categories#index"
 
+  # Saved_Products
+  post "/saved_products" => "saved_products#create"
+  get "/saved_products" => "saved_products#index"
+
   # Defines the root path route ("/")
   # root "posts#index"
   # 
