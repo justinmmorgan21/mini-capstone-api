@@ -23,6 +23,14 @@ class Product < ApplicationRecord
     "$%0.2f" % [total]
   end
 
+  def get_images
+    if images.length == 0
+      [id: -1, url:'https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM=']
+    else
+      images
+    end
+  end
+
   belongs_to :supplier
 
   has_many :images

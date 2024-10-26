@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     if @product.save
-      params[:image] && params[:image].each { |image|
+      params[:images] && params[:images].each { |image|
         Image.create(url: image, product_id: @product.id)
       }
       render :show
@@ -20,14 +20,9 @@ class ProductsController < ApplicationController
   end
   
   def index
-    # pp "USER IS HERE"
-    # pp current_user
-    # pp "USER WAS HERE"
     @products = Product.all
     render :index
   end
-  
-  # UPDATE
   def update
     @product = Product.find_by(id: params[:id])
     @product.name = params[:name] || @product.name
@@ -36,7 +31,7 @@ class ProductsController < ApplicationController
     @product.inventory = params[:inventory] || @product.inventory
     @product.supplier_id = params[:supplier_id] || @product.supplier_id
     if @product.save
-      params[:image] && params[:image].each { |image|
+      params[:images] && params[:images].each { |image|
         Image.create(url: image, product_id: @product.id)
       }
       render :show
