@@ -16,7 +16,12 @@ class SavedProductsController < ApplicationController
   end
 
   def index
-    @saved_products = SavedProduct.all
-    render :index
+    if current_user
+      @saved_products = SavedProduct.where(user_id: current_user.id)
+      render :index
+    else
+      render json: { message: "You must be logged in." }
+    end
   end
+
 end
